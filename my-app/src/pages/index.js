@@ -23,15 +23,18 @@ export default function Home() {
       console.log("Public mint");
       // We need a Signer here since this is a 'write' transaction.
       const signer = await getProviderOrSigner(true);
+      console.log("got signer");
       // Create a new instance of the Contract with a Signer, which allows
       // update methods
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
+      console.log("got nftContract")
       // call the mint from the contract to mint the LW3Punks
       const tx = await nftContract.mint({
         // value signifies the cost of one LW3Punks which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
         value: utils.parseEther("0.01"),
       });
+      console.log("got tx mint")
       setLoading(true);
       // wait for the transaction to get mined
       await tx.wait();
@@ -157,7 +160,7 @@ export default function Home() {
         Public Mint 🚀
       </button>
     );
-  };
+  };        
 
   return (
     <div>
@@ -178,7 +181,7 @@ export default function Home() {
           {renderButton()}
         </div>
         <div>
-          <img className={styles.image} src="./LW3punks/1.png" />
+          <img className={styles.image} src="./LW3Punks/1.png" />
         </div>
       </div>
 
