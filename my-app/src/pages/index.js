@@ -1,9 +1,13 @@
+'use client'
+
 import { Contract, providers, utils } from "ethers";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { abi, NFT_CONTRACT_ADDRESS } from "/constants";
 import styles from "../styles/Home.module.css";
+import { Loading, Button, Container } from "@nextui-org/react";
+import Image from "next/image";
 
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -13,7 +17,7 @@ export default function Home() {
   // tokenIdsMinted keeps track of the number of tokenIds that have been minted
   const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
-  const web3ModalRef = useRef();
+  const web3ModalRef = useRef('');
 
   /**
    * publicMint: Mint an NFT
@@ -39,7 +43,7 @@ export default function Home() {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
-      window.alert("You successfully minted a LW3Punk!");
+      window.alert("You successfully minted a 24Codelabz NFT!");
     } catch (err) {
       console.error(err);
     }
@@ -130,10 +134,10 @@ export default function Home() {
 
       getTokenIdsMinted();
 
-      // set an interval to get the number of token Ids minted every 5 seconds
+      // set an interval to get the number of token Ids minted every 2 seconds
       setInterval(async function () {
         await getTokenIdsMinted();
-      }, 5 * 1000);
+      }, 2000);
     }
   }, [walletConnected]);
 
@@ -152,7 +156,10 @@ export default function Home() {
 
     // If we are currently waiting for something, return a loading button
     if (loading) {
-      return <button className={styles.button}>Loading...</button>;
+      return (
+            <Button disabled auto bordered color="secondary" css={{ px: "$13" }}>
+              <Loading type="spinner" color="currentColor" size="sm" />
+            </Button>)
     }
 
     return (
@@ -165,27 +172,29 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>LW3Punks</title>
-        <meta name="description" content="LW3Punks-Dapp" />
+        <title>24Codelabz</title>
+        <meta name="description" content="24Codelabz-Dapp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-        <div>
-          <h1 className={styles.title}>Welcome to LW3Punks!</h1>
+        <div className={styles.content}>
+          <h1 className={styles.title}>Welcome to 24Codelabz!</h1>
           <div className={styles.description}>
-            Its an NFT collection for LearnWeb3 students.
+            Its an NFT collection Dapp.
           </div>
           <div className={styles.description}>
             {tokenIdsMinted}/10 have been minted
           </div>
           {renderButton()}
         </div>
+
+        
         <div>
-          <img className={styles.image} src="./LW3Punks/1.png" />
+          <Image width={500} height={400}  src="/LW3Punks/_24codelabz .png" />
         </div>
       </div>
 
-      <footer className={styles.footer}>Made with &#10084; by LW3Punks</footer>
+      <footer className={styles.footer}>With &#10084; by 24Codelabz</footer>
     </div>
   );
 }
