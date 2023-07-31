@@ -180,7 +180,7 @@ export default function Home() {
         <div className={styles.content}>
           <h1 className={styles.title}>Welcome to 24Codelabz!</h1>
           <div className={styles.description}>
-            Its an NFT collection Dapp.
+            Its an NFT collection Dapp using Interplanetary file system (IPFS)
           </div>
           <div className={styles.description}>
             {tokenIdsMinted}/10 have been minted
@@ -194,7 +194,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className={styles.footer}>With &#10084; by 24Codelabz</footer>
+      <footer className={styles.footer}>With &#10084; by Gideon Abbey (24Codelabz)</footer>
     </div>
   );
 }

@@ -8,6 +8,8 @@
 }
 
 .footer {
+  background-color: rgb(7, 7, 82);
+  color: #eaeaea;
   display: flex;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
