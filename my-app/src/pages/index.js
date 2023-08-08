@@ -148,7 +148,7 @@ export default function Home() {
     // If wallet is not connected, return a button which allows them to connect their wallet
     if (!walletConnected) {
       return (
-        <button onClick={connectWallet} className={styles.button}>
+        <button onPress={connectWallet} className={styles.button}>
           Connect your wallet
         </button>
       );
@@ -163,7 +163,7 @@ export default function Home() {
     }
 
     return (
-      <button className={styles.button} onClick={publicMint}>
+      <button className={styles.button} onPress={publicMint}>
         Public Mint 🚀
       </button>
     );
